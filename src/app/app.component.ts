@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+//import {Pic} from "./pic.model";
+
 
 @Component({
   selector: 'app-root',

@@ -1,8 +1,8 @@
-<div>? of ?</div>
-<button class="btn btn-warning">Prev</button>
-<button class="btn btn-warning">Next</button>
-<button class="btn btn-warning" (click)="toggleThumbs">Jump</button>
+<div>{{ currentImg }} of {{ galleryLength }}</div>
+<button class="btn btn-warning" (click)="prevImg()" [disabled]="currentImg == 0">Prev</button>
+<button class="btn btn-warning" (click)="nextImg()" [disabled]="currentImg == galleryLength">Next</button>
+<button class="btn btn-warning" (click)="toggleJump()">Jump</button>
 <br>
-<div *ngIf="thumbsVisible">
+<div *ngIf="jumpVisible">
   <img src="#">
 </div>
