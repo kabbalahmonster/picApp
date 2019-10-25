@@ -14,13 +14,8 @@ export class NaviComponent implements OnInit {
   jumpVisible: boolean = false;
 
   //--------------------------- Initialization
-  constructor(public picDataService: PicDataService) { 
-
-  }
-
-  ngOnInit() {
-  }
-
+  constructor(public picDataService: PicDataService) {}
+  ngOnInit() {}
 
   //----------------------------- Methods
   

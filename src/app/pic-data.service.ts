@@ -25,6 +25,7 @@ export class PicDataService {
         this.http = myHttp;
     }   
     
+    // --------------------- load and prepare data
     public load():void {
         console.log("loading data!");
         this.http.get<JSONRoot>(this.RETRIEVE_SCRIPT).subscribe(
@@ -50,12 +51,11 @@ export class PicDataService {
         );        
     }
   
-  // set current photo by index number
+  // set current photo by index reference
   public select(index:number):void {;
       this.selectedIndex = Number(index);
       this.selected = this.photos[this.selectedIndex]
-  }
-  
+  }  
 
   // move the selected index reference + 1
   public nextImg(): void {

@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { PicDataService } from './pic-data.service';
-//import {Pic} from "./pic.model";
-
 
 @Component({
   selector: 'app-root',
@@ -14,16 +12,8 @@ export class AppComponent implements OnInit{
   constructor(public picDataService: PicDataService){
     
     this.picDataService.load();
-  }
-
-
-  
+  }  
   ngOnInit(): void {
-
-    console.log(this.picDataService);
-     
-
+    console.log(this.picDataService);     
   }
-
-
 }
