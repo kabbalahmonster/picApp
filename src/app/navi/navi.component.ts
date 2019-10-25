@@ -28,10 +28,5 @@ export class NaviComponent implements OnInit {
   public toggleJump(): void {
     this.jumpVisible = !this.jumpVisible;
   }
-  // build thu
-  public populateMe(){
-
-  }
- 
 
 }

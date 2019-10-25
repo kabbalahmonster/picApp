@@ -1,3 +1,5 @@
-<p>
-  comment works!
-</p>
+<textarea rows="4" cols="50"></textarea>
+<br>
+<label id="author">Author: </label>
+<input id="author" type="text">
+<div *ngFor="let comment of picDataService.selected.comments">{{comment}}</div> 
