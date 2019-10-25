@@ -11,7 +11,7 @@ export class PicDataService {
 
   //----Http
   private http:HttpClient;
-  private readonly RETRIEVE_SCRIPT: string = "http://www.seanmorrow.ca/_lessons/retrieveAlbum.php?id=w0419574&count=11";
+  private readonly RETRIEVE_SCRIPT: string = "http://www.seanmorrow.ca/_lessons/retrieveAlbum.php?id=w0419574&count=6";
 
   public photos: Photo[];
 
@@ -49,12 +49,15 @@ export class PicDataService {
             }
         );        
     }
-
+  
+  // set current photo by index number
   public select(index:number):void {
       this.selected = this.photos[index];
       this.selectedIndex = index;
   }
+  
 
+  // move the selected index reference + 1
   public nextImg(): void {
     if(this.selectedIndex < this.photos.length) {
       this.selectedIndex += 1;
@@ -63,6 +66,7 @@ export class PicDataService {
     }
   }
 
+  // move the selected index reference - 1
   public prevImg(): void {
     if(this.selectedIndex > 0) {
       this.selectedIndex -= 1;      
@@ -70,10 +74,12 @@ export class PicDataService {
     }
   }
 
+  // return index number of selected
   public getIndexString(): string {
     return this.selectedIndex.toString();
   }
 
+  // return a string path to image source
   public getPath(strSource : string = this.selected.source):string{
     let pathString: string = `../assets/photos/${strSource}`;
     console.log(pathString);
