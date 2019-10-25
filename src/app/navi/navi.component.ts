@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PicDataService } from '../pic-data.service';
+import { Photo } from "../pic.model";
 
 @Component({
   selector: 'app-navi',
@@ -10,13 +12,9 @@ export class NaviComponent implements OnInit {
   //--------------------------- Variables
 
   jumpVisible: boolean = false;
-  currentImg: number = 0;
-  galleryLength: number;
 
   //--------------------------- Initialization
-  constructor() { 
-
-    this.galleryLength = 2;
+  constructor(public picDataService: PicDataService) { 
 
   }
 
@@ -30,15 +28,6 @@ export class NaviComponent implements OnInit {
     this.jumpVisible = !this.jumpVisible;
   }
 
-  public nextImg(): void {
-    if(this.currentImg < this.galleryLength) {
-      this.currentImg += 1;
-    }
-  }
+ 
 
-  public prevImg(): void {
-    if(this.currentImg > 0) {
-      this.currentImg -= 1;
-    }
-  }
 }

@@ -1,8 +1,10 @@
-<div>{{ currentImg }} of {{ galleryLength }}</div>
-<button class="btn btn-warning" (click)="prevImg()" [disabled]="currentImg == 0">Prev</button>
-<button class="btn btn-warning" (click)="nextImg()" [disabled]="currentImg == galleryLength">Next</button>
-<button class="btn btn-warning" (click)="toggleJump()">Jump</button>
+<div>{{ picDataService.selectedIndex }} of {{ picDataService.photos.length }}</div>
+<button class="btn btn-warning" (click)="picDataService.prevImg()" [disabled]="picDataService.selectedIndex == 0">Prev</button>
+<button class="btn btn-warning" (click)="picDataService.nextImg()" [disabled]="picDataService.selectedIndex == picDataService.photos.length">Next</button>
+<button class="btn btn-warning" (click)="this.toggleJump()">Jump</button>
 <br>
-<div *ngIf="jumpVisible">
-  <img src="#">
+<div *ngIf="this.jumpVisible" >
+  <div *ngFor="let photo of photos">
+    <img src="#">
+  </div>
 </div>

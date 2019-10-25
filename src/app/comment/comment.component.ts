@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { PicDataService } from '../pic-data.service';
+
 @Component({
   selector: 'app-comment',
   templateUrl: './comment.component.html',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CommentComponent implements OnInit {
 
-  constructor() { }
+  constructor(public picDataService: PicDataService) { }
 
   ngOnInit() {
   }

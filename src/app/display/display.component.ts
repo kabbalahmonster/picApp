@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { PicDataService } from '../pic-data.service';
+
 @Component({
   selector: 'app-display',
   templateUrl: './display.component.html',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DisplayComponent implements OnInit {
 
-  constructor() { }
+  constructor(public picDataService: PicDataService) { }
 
   ngOnInit() {
   }
