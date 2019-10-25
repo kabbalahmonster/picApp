@@ -23,11 +23,15 @@ export class NaviComponent implements OnInit {
 
 
   //----------------------------- Methods
-
+  
+  // toggle jump menu / thumbnails
   public toggleJump(): void {
     this.jumpVisible = !this.jumpVisible;
   }
+  // build thu
+  public populateMe(){
 
+  }
  
 
 }

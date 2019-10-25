@@ -73,6 +73,12 @@ export class PicDataService {
   public getIndexString(): string {
     return this.selectedIndex.toString();
   }
+
+  public getPath(strSource : string = this.selected.source):string{
+    let pathString: string = `../assets/photos/${strSource}`;
+    console.log(pathString);
+    return pathString;
+  }
   
 } 
 
