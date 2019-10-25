@@ -1,12 +1,12 @@
-<div>{{ picDataService.selectedIndex }} of {{ picDataService.photos.length }}</div>
+<div>{{ picDataService.selectedIndex + 1}} of {{ picDataService.photos.length }}</div>
 <button class="btn btn-warning" (click)="picDataService.prevImg()" [disabled]="picDataService.selectedIndex == 0">Prev</button>
 <button class="btn btn-warning" (click)="picDataService.nextImg()" [disabled]="picDataService.selectedIndex == picDataService.photos.length-1">Next</button>
 <button class="btn btn-warning" (click)="this.toggleJump()">Jump</button>
+
 <br>
 
 <div *ngIf="this.jumpVisible" >
   <div >
-  <!--img src="../assets/photos/wellness01.jpg"-->
     <img class="thumbnail" *ngFor="let photo of picDataService.photos; let i = index" id="{{i}}" src="../assets/photos/{{photo.source}}" (click)="picDataService.select($event.target.id)">
   </div>
 </div>

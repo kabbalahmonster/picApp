@@ -1,6 +1,6 @@
-<div class="loading-overlay"></div>
-
-<div class="container">
+<!--div class="loading-overlay"></div-->
+<div *ngIf="!picDataService.photos.length>0; else elseBlock">No photos in gallery</div>
+<div class="container" *ngIf="picDataService.photos.length>0; else elseBlock">
   
   <div class="row">
     <div class="col-mb-3">
