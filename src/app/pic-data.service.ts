@@ -11,7 +11,7 @@ export class PicDataService {
 
   //----Http
   private http:HttpClient;
-  private readonly RETRIEVE_SCRIPT: string = "http://www.seanmorrow.ca/_lessons/retrieveAlbum.php?id=w0419574&count=6";
+  private readonly RETRIEVE_SCRIPT: string = "http://www.seanmorrow.ca/_lessons/retrieveAlbum.php?id=w0419574&count=11";
 
   public photos: Photo[];
 
@@ -51,9 +51,9 @@ export class PicDataService {
     }
   
   // set current photo by index number
-  public select(index:number):void {
-      this.selected = this.photos[index];
-      this.selectedIndex = index;
+  public select(index:number):void {;
+      this.selectedIndex = Number(index);
+      this.selected = this.photos[this.selectedIndex]
   }
   
 
