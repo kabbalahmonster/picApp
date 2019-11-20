@@ -1,7 +1,7 @@
 <br>
-<textarea rows="4" cols="40">Comment</textarea>
+<textarea rows="4" cols="40" class="form-control">Comment</textarea>
 <br>
 <label id="author">Author: </label>
-<input id="author" type="text">
+<input id="author" type="text" class="form-control">
 <button class="btn btn-warning">Submit</button>
 <div *ngFor="let comment of picDataService.selected.comments">{{comment}}</div> 

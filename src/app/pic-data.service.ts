@@ -23,8 +23,8 @@ export class PicDataService {
 
     constructor(myHttp:HttpClient){
         this.http = myHttp;
-    }   
-    
+    }
+
     // --------------------- load and prepare data
     public load():void {
         console.log("loading data!");
@@ -48,14 +48,14 @@ export class PicDataService {
             err => {
                 console.log("Error retrieving photo data :(");
             }
-        );        
+        );
     }
-  
+
   // set current photo by index reference
-  public select(index:number):void {;
+  public select(index:number):void {
       this.selectedIndex = Number(index);
-      this.selected = this.photos[this.selectedIndex]
-  }  
+      this.selected = this.photos[this.selectedIndex];
+  }
 
   // move the selected index reference + 1
   public nextImg(): void {
@@ -69,7 +69,7 @@ export class PicDataService {
   // move the selected index reference - 1
   public prevImg(): void {
     if(this.selectedIndex > 0) {
-      this.selectedIndex -= 1;      
+      this.selectedIndex -= 1;
       this.select(this.selectedIndex);
     }
   }
@@ -85,7 +85,7 @@ export class PicDataService {
     console.log(pathString);
     return pathString;
   }
-  
-} 
+
+}
 
 
