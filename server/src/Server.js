@@ -63,9 +63,9 @@ app.post("/post", async (request, response) => {
         let photoCollection = await mongoClient.db(DB_NAME).collection("photos");
         
         
-        //request.body.photoId = request.sanitize(request.body.photoId);
-        //request.body.author = request.sanitize(request.body.author);
-       // request.body.comment = request.sanitize(request.body.comment);
+        request.body.photoId = request.sanitize(request.body.photoId);
+        request.body.author = request.sanitize(request.body.author);
+        request.body.comment = request.sanitize(request.body.comment);
         console.log(">>>> post photoID : " + request.body.photoId +"\n>>" + request.body.author);
 
         // add the new document into MongoDB
@@ -92,7 +92,7 @@ app.post("/post", async (request, response) => {
 
 
 
-app.put("/put/:id", async (request, response) => {
+app.put("/put", async (request, response) => {
     // Use connect method to connect to the server
     try {
 
@@ -100,33 +100,18 @@ app.put("/put/:id", async (request, response) => {
         let mongoClient = new MongoClient(URL, { useNewUrlParser: true, useUnifiedTopology: true });
 
         await mongoClient.connect(); 
-        // convert all documents in technologies collection into array in one awesome statement!
-        let techCollection = await mongoClient.db(DB_NAME).collection("photos");
+        // convert all documents in photo collection into array in one awesome statement!
+        let photoCollection = await mongoClient.db(DB_NAME).collection("photos");
         
-        let id = objectId(request.params.id);
         
-       /* request.body.title = request.sanitize(request.body.title);
-        request.body.caption = request.sanitize(request.body.caption);
-        request.body.source = request.sanitize(request.body.source);
-        request.body.comments.forEach(comment => {
-            comment.text = request.sanitize(comment.text);
-            comment.author = request.sanitize(comment.author);   
-            
-        }); */
         request.body.photoId = request.sanitize(request.body.photoId);
         request.body.author = request.sanitize(request.body.author);
         request.body.comment = request.sanitize(request.body.comment);
-
         console.log(">>>> post photoID : " + request.body.photoId +"\n>>" + request.body.author);
 
-
-        // building our update query
-        let selector = {"_id":id};
-        let newValue = {$set:{"name":request.body.name,"description":request.body.description,"difficulty":request.body.difficulty,"courses":request.body.courses} };
-
         // add the new document into MongoDB
-        //let result = await techCollection.updateOne(selector, newValue);
-        let result = await techCollection.updateOne({_id: objectId("5dd387472f40c1b21a11ee19")},
+        //let result = await photos.updateOne(_{id: request.body.photoId},);
+        let result = await photoCollection.updateOne({_id: objectId(request.body.photoId)},
                                             {$push: {"comments": {
                                                 $each:[{"author":request.body.author,
                                                         "comment":request.body.comment}],
@@ -146,7 +131,7 @@ app.put("/put/:id", async (request, response) => {
     }
 });
 
-
+/*
 app.delete("/delete/:id", async (request, response) => {
     // Use connect method to connect to the server
     try {
@@ -178,7 +163,7 @@ app.delete("/delete/:id", async (request, response) => {
         response.send({error: `Server error with get : ${error}`});
         throw error;
     }
-});
+});*/
 
 
 
