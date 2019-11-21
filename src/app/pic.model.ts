@@ -3,7 +3,7 @@ export interface JSONRoot {
 }
 
 export interface Photo {
-    id:       string;
+    _id:       string;
     title:    string;
     caption:  string;
     source:   string;

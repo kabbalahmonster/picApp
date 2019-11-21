@@ -1,7 +1,42 @@
-<br>
-<textarea rows="4" cols="40" class="form-control">Comment</textarea>
-<br>
-<label id="author">Author: </label>
-<input id="author" type="text" class="form-control">
-<button class="btn btn-warning">Submit</button>
-<div *ngFor="let comment of picDataService.selected.comments">{{comment}}</div> 
+
+<div *ngFor="let comment of picDataService.selected.comments">
+    <hr>
+    <p>{{comment.comment}}</p>
+    <b>{{comment.author}}</b>
+    <hr>
+</div> 
+
+<form #putForm="ngForm" (ngSubmit)="picDataService.sendUpdate(putForm.value)">
+    <br>
+    <div class="form-group">
+        <textarea 
+            rows="4" 
+            cols="40" 
+            class="form-control"
+            id="comment"
+            required 
+            ngModel
+            name="comment"
+            >Comment
+        </textarea>
+    </div>
+    <br>
+
+    <div class="form-group">
+        <label id="author">Author: </label>
+        <input 
+            id="author" 
+            type="text" 
+            class="form-control"
+            required
+            ngModel
+            name="author"
+            >
+
+        <br>
+    </div>
+    <button 
+        class="btn btn-warning"
+        type="submit"
+        [disabled]="!putForm.valid">Submit</button>
+</form>

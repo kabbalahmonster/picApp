@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {JSONRoot} from "./pic.model";
 import {Photo} from "./pic.model";
+import {Comment} from "./pic.model";
 
 @Injectable({
   providedIn: 'root'
@@ -12,16 +13,17 @@ export class PicDataService {
   //----Http
   private http:HttpClient;
   private readonly RETRIEVE_SCRIPT: string = "http://127.0.0.1:8088/get";
-
-  public photos: Photo[];
-
+  private readonly UPDATE_SCRIPT: string = "http://127.0.0.1:8088/put";
+  //---- Objects and Attributes
+  public photos: Photo[];  
   public loaded:boolean = false;
+  public selected:Photo;
+  public selectedIndex:number = 0;
+  private myComment: Comment = ({photoId: "",
+                                author: "",
+                                comment: ""});
 
-    public selected:Photo;
-
-    public selectedIndex:number = 0;
-
-    constructor(myHttp:HttpClient){
+    constructor(myHttp:HttpClient){new Comment
         this.http = myHttp;
     }
 
@@ -84,6 +86,27 @@ export class PicDataService {
     let pathString: string = `../assets/photos/${strSource}`;
     console.log(pathString);
     return pathString;
+  }
+  // send new comment data via PUT request
+  public sendUpdate(putData: {author: string, comment: string}): void {
+    this.myComment.photoId = this.selected._id;
+    console.log("selected id : " + this.selected._id);
+    this.myComment.author = putData.author;
+    this.myComment.comment = putData.comment; 
+    console.log(this.selected );
+    console.log(this.myComment);   
+    
+    this.http.put(this.UPDATE_SCRIPT, this.myComment).subscribe(
+      data =>{
+        console.log(data);
+        window.location.reload();
+      },
+      err => {
+        console.log(err);
+      }
+
+    );
+
   }
 
 }

@@ -9,6 +9,9 @@ import { PicDataService } from '../pic-data.service';
 })
 export class CommentComponent implements OnInit {
 
+
+  
+
   constructor(public picDataService: PicDataService) {}
   ngOnInit() {}
 }
