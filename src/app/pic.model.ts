@@ -9,3 +9,9 @@ export interface Photo {
     source:   string;
     comments: any[];
 }
+
+export interface Comment {
+    photoId: string;
+    author: string;
+    comment: string;    
+}

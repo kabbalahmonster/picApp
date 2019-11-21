@@ -11,7 +11,7 @@ export class PicDataService {
 
   //----Http
   private http:HttpClient;
-  private readonly RETRIEVE_SCRIPT: string = "http://www.seanmorrow.ca/_lessons/retrieveAlbum.php?id=w0419574&count=11";
+  private readonly RETRIEVE_SCRIPT: string = "http://127.0.0.1:8088/get";
 
   public photos: Photo[];
 
