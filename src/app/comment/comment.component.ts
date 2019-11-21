@@ -9,7 +9,7 @@ import { PicDataService } from '../pic-data.service';
 })
 export class CommentComponent implements OnInit {
 
-
+  private commentsVisible: boolean = false;
   
 
   constructor(public picDataService: PicDataService) {}

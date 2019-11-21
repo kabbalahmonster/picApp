@@ -1,42 +1,56 @@
+<hr>
+<button id="btnEnable" 
+        class="btn btn-warning" 
+        *ngIf="!this.commentsVisible"
+        (click)="this.commentsVisible = true"
+        >Comments
+</button>
+<div id="container" *ngIf="this.commentsVisible">
+    <b>Comments : </b>
+    <div *ngFor="let comment of picDataService.selected.comments">
+        <hr>
+        <p>{{comment.comment}}</p>
+        <b>{{comment.author}}</b>
+        <hr>
+    </div> 
 
-<div *ngFor="let comment of picDataService.selected.comments">
-    <hr>
-    <p>{{comment.comment}}</p>
-    <b>{{comment.author}}</b>
-    <hr>
-</div> 
-
-<form #putForm="ngForm" (ngSubmit)="picDataService.sendUpdate(putForm.value)">
-    <br>
-    <div class="form-group">
-        <textarea 
-            rows="4" 
-            cols="40" 
-            class="form-control"
-            id="comment"
-            required 
-            ngModel
-            name="comment"
-            >Comment
-        </textarea>
-    </div>
-    <br>
-
-    <div class="form-group">
-        <label id="author">Author: </label>
-        <input 
-            id="author" 
-            type="text" 
-            class="form-control"
-            required
-            ngModel
-            name="author"
-            >
-
+    <form #putForm="ngForm" (ngSubmit)="picDataService.sendUpdate(putForm.value)">
+        <hr>
+        <div class="form-group">            
+            <label id="author"
+                >Leave a comment : 
+            </label>
+            <textarea 
+                rows="4" 
+                cols="40" 
+                class="form-control"
+                id="comment"
+                required 
+                ngModel
+                name="comment"
+                >Comment
+            </textarea>
+        </div>
         <br>
-    </div>
-    <button 
-        class="btn btn-warning"
-        type="submit"
-        [disabled]="!putForm.valid">Submit</button>
-</form>
+
+        <div class="form-group">
+            <label id="author"
+                >Author : 
+            </label>
+            <input 
+                id="author" 
+                type="text" 
+                class="form-control"
+                required
+                ngModel
+                name="author"
+                >
+
+            <br>
+        </div>
+        <button 
+            class="btn btn-warning"
+            type="submit"
+            [disabled]="!putForm.valid">Submit</button>
+    </form>
+</div>
